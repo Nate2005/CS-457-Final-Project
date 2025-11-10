@@ -1,7 +1,16 @@
 -- Create Table Queries
 
-CREATE TABLE review (
+CREATE TABLE product (
     product_id varchar(8),
+    product_name text,
+    product_description text,
+    price decimal,
+    stock_qty integer,
+    PRIMARY KEY (product_id)
+);
+
+CREATE TABLE review (
+    product_id varchar(8) REFERENCES product,
     customer_id integer REFERENCES customer,
     review text,
     verified_purchase boolean,
@@ -10,9 +19,9 @@ CREATE TABLE review (
 
 CREATE TABLE customer (
     customer_id integer,
-    first_name varchar(20),
-    lase_name varchar(20),
-    user_address vaarchar(20),
+    first_name text,
+    lase_name text,
+    user_address text,
     PRIMARY KEY (customer_id)
 );
 
@@ -26,7 +35,7 @@ CREATE TABLE order (
 
 CREATE TABLE order_item (
     order_id integer REFERENCES order,
-    product_id varchar(8),
+    product_id varchar(8) REFERENCES product,
     PRIMARY KEY (order_id)
 );
 
