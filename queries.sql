@@ -1,5 +1,4 @@
 -- Create Table Queries
-
 CREATE TABLE product (
     product_id varchar(8),
     product_name text,
@@ -9,20 +8,20 @@ CREATE TABLE product (
     PRIMARY KEY (product_id)
 );
 
-CREATE TABLE review (
-    product_id varchar(8) REFERENCES product,
-    customer_id integer REFERENCES customer,
-    review text,
-    verified_purchase boolean,
-    PRIMARY KEY (product_id, customer_id)
-);
-
 CREATE TABLE customer (
     customer_id integer,
     first_name text,
     lase_name text,
     user_address text,
     PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE review (
+    product_id varchar(8) REFERENCES product,
+    customer_id integer REFERENCES customer,
+    review text,
+    verified_purchase boolean,
+    PRIMARY KEY (product_id, customer_id)
 );
 
 CREATE TABLE order (
